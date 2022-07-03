@@ -43,8 +43,21 @@ function openModal() {
 function authFormHandler(e) {
   e.preventDefault();
 
+  const btn = e.target.querySelector('button');
   const email = e.target.querySelector('#email').value;
   const password = e.target.querySelector('#password').value;
 
-  authWithEmailAndPassword(email, password).then(Question.fetch).then(renderModalAfterAuth());
+  btn.disabled = true;
+  authWithEmailAndPassword(email, password)
+    .then(Question.fetch)
+    .then(renderModalAfterAuth)
+    .then(() => (btn.disabled = false));
+}
+
+function renderModalAfterAuth(content) {
+  if (typeof content === 'string') {
+    createModal('Ошибка!', content);
+  } else {
+    createModal('Список вопросов: ', Question.listToHtml(content));
+  }
 }

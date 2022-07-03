@@ -49,3 +49,25 @@ button {
 .author {
   font-size: 12px;
 }
+
+.floating-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+
+.modal {
+  max-width: 600px;
+  max-height: 300px;
+  margin: 100px auto;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.modal > h1 {
+  text-align: center;
+}
+
+.modal .modal-content {
+  padding: 1rem;
+}
